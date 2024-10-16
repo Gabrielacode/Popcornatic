@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.core.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="8dp"
+        >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/trending_movie_list"
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:background="@android:color/transparent"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                style="@style/LabelText"
+                android:id="@+id/popular_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/popular"
+                android:layout_marginStart="8dp"
+                android:layout_below="@id/trending_movie_list"
+            />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/popular_movie_list"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:background="@android:color/transparent"
+                android:layout_below="@id/popular_label"
+                android:paddingHorizontal="12dp"
+                />
+            <TextView
+                style="@style/LabelText"
+                android:id="@+id/upcoming_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/upcoming"
+                android:layout_marginStart="8dp"
+                android:layout_below="@id/popular_movie_list"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/upcoming_movie_list"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:background="@android:color/transparent"
+                android:layout_below="@id/upcoming_label"
+                android:paddingHorizontal="12dp"
+                />
+            <TextView
+                style="@style/LabelText"
+                android:id="@+id/toprated_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/top_rated"
+                android:layout_marginStart="8dp"
+                android:layout_below="@id/upcoming_movie_list"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/toprated_movie_list"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:background="@android:color/transparent"
+                android:layout_below="@id/toprated_label"
+                android:paddingHorizontal="12dp"
+                />
+
+
+
+
+    </RelativeLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+

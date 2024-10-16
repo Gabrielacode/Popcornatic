@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Popcornatic" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/main_yellow</item>
+        <item name="colorPrimaryDark">#171512</item>
+        <item name="colorPrimaryVariant">@color/main_yellow_variant</item>
+        <item name="android:colorBackground">@color/main_black</item>
+        <item name="colorSurface">@android:color/transparent</item>
+        <item name="colorSecondary">@color/main_yellow</item>
+        <item name="colorSecondaryVariant">@color/main_yellow_variant</item>
+
+    </style>
+</resources>
