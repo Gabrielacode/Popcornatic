@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Popcornatic" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/main_white</item>
+        <item name="colorAccent">@color/main_blue</item>
+    </style>
+
+    <style name="Theme.Popcornatic" parent="Base.Theme.Popcornatic" />
+    <style name="LabelText" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/afacad_flux</item>
+    </style>
+    <style name="NormalText" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/outfit</item>
+    </style>
+    <style name="List">
+        <item name="android:textSize">16sp</item>
+    </style>
+</resources>
