@@ -4,6 +4,9 @@ import android.util.Log
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.solt.popcornatic.BASE_URL
 import com.solt.popcornatic.movies.data.api.MovieApiImpl
+import com.solt.popcornatic.movies.data.repository.MovieRepository
+import com.solt.popcornatic.movies.data.repository.MovieRepositoryImpl
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,13 +21,13 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class MovieModule {
+ class MovieModule {
     private var json = Json { this.ignoreUnknownKeys = true }
 
     @Provides
     @Singleton
      fun providesOkHttp():OkHttpClient{
-         val accessToken ="********";
+         val accessToken ="eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMDBmYWQ0NWVkZmJlN2IzOTY5ZGI5MTVlOGY1MmRlYiIsIm5iZiI6MTcyODY3ODUzMC4wMjA0NDgsInN1YiI6IjY2ZGIxNWM1NTFiZjZhYjk0MDcwNDJjMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.H75BZRntCvbKh-L9KUqvAxPfnolKlVpVIFmE_TQsAoA";
         val logging = object :Interceptor{
             override fun intercept(chain: Interceptor.Chain): Response {
                 val request = chain.request()
@@ -71,4 +74,5 @@ class MovieModule {
      fun providesMoviesApi(retrofit: Retrofit):MovieApiImpl{
          return retrofit.create(MovieApiImpl::class.java)
      }
+
 }

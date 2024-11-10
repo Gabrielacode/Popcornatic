@@ -2,12 +2,46 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Popcornatic" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/main_yellow</item>
+        <item name="colorOnPrimary">@color/main_white</item>
+        <item name="android:textColorPrimary">@color/main_white</item>
+        <item name="android:textColorSecondary">@color/main_black</item>
         <item name="colorPrimaryDark">#171512</item>
-        <item name="colorPrimaryVariant">@color/main_yellow_variant</item>
+        <item name="colorPrimaryVariant">#8A7511</item>
         <item name="android:colorBackground">@color/main_black</item>
-        <item name="colorSurface">@android:color/transparent</item>
+        <item name="colorSurface">@color/main_surface_colour</item>
+        <item name="colorContainer">@color/main_surface_colour</item>
         <item name="colorSecondary">@color/main_yellow</item>
         <item name="colorSecondaryVariant">@color/main_yellow_variant</item>
+        <item name="imageButtonStyle">@style/ImageButton</item>
+        <item name="cardBackgroundColor">@color/main_surface_colour</item>
 
+    </style>
+    <style name="LabelText" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/afacad_flux</item>
+    </style>
+    <style name="NormalText" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/outfit</item>
+    </style>
+    <style name="CustomButton" parent="Widget.AppCompat.Button">
+        <item name="shapeAppearance">@style/RoundedRectShapeButtonShape</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="rippleColor">?attr/colorPrimary</item>
+        <item name="android:background">@null</item>
+        <item name="backgroundTint">@color/main_surface_colour</item>
+        <item name="textAllCaps">false</item>
+    </style>
+    <style name="CustomButton.Rounded" parent="CustomButton">
+        <item name="shapeAppearance">@style/RoundedRectShapeButtonRoundedShape</item>
+    </style>
+    <style name="List">
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="ImageButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:backgroundTint">@android:color/transparent</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="tint">@color/main_yellow</item>
     </style>
 </resources>

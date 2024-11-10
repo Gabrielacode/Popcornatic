@@ -3,4 +3,8 @@
     <string name="popular">Popular</string>
     <string name="upcoming">Upcoming</string>
     <string name="top_rated">Top-Rated</string>
+    <string name="original_title">Original Title</string>
+    <string name="overview">Overview</string>
+    <string name="origin_countries">Origin Countries</string>
+    <string name="recommended">Recommended</string>
 </resources>

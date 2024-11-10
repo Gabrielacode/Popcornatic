@@ -4,12 +4,12 @@ plugins {
     kotlin("plugin.serialization") version "2.0.20"
     id ("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("androidx.navigation.safeargs")
 }
 
 android {
     namespace = "com.solt.popcornatic"
     compileSdk = 34
-
     defaultConfig {
         applicationId = "com.solt.popcornatic"
         minSdk = 26
@@ -96,7 +96,9 @@ dependencies {
     //Dagger Hilt
     implementation("com.google.dagger:hilt-android:$dagger_version")
     kapt("com.google.dagger:hilt-android-compiler:$dagger_version")
+    //Browser and Custom Tabs
 
+    implementation ("androidx.browser:browser:1.8.0")
 }
 kapt{
     correctErrorTypes = true
