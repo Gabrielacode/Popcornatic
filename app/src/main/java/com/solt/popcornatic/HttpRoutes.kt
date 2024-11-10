@@ -6,3 +6,9 @@ const val POSTER_IMAGE_SIZE ="original"
 const val BACKDROP_IMAGE_SIZE = "original"
 const val MOVIES_PATH = "movie"
 const val US_ENGLISH = "en-US"
+const val MAX_PAGE_NUMBER = 500
+const val MIN_PAGE_NUMBER = 1
+
+enum class AppendToResponseOptions( var title: String) {
+    VIDEOS("videos"),IMAGES("images"),CREDITS("credits")
+}

@@ -13,9 +13,10 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/trending_movie_list"
                 android:layout_width="match_parent"
-                android:layout_height="320dp"
-                android:background="@android:color/transparent"
-                android:layout_marginBottom="8dp"/>
+                android:layout_height="260dp"
+                android:background="@drawable/outline_shape"
+                android:layout_marginBottom="8dp"
+                android:padding="8dp"/>
 
             <TextView
                 style="@style/LabelText"
@@ -29,7 +30,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/popular_movie_list"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="180dp"
                 android:background="@android:color/transparent"
                 android:layout_below="@id/popular_label"
                 android:paddingHorizontal="12dp"
@@ -46,7 +47,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/upcoming_movie_list"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="180dp"
                 android:background="@android:color/transparent"
                 android:layout_below="@id/upcoming_label"
                 android:paddingHorizontal="12dp"
@@ -63,7 +64,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/toprated_movie_list"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="180dp"
                 android:background="@android:color/transparent"
                 android:layout_below="@id/toprated_label"
                 android:paddingHorizontal="12dp"

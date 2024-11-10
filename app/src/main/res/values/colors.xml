@@ -9,4 +9,5 @@
     <color name="main_yellow_variant">#E3CD64</color>
     <color name="main_blue_variant">#B8C0F5</color>
     <color name="main_surface_colour">#221F1B</color>
+    <color name="main_error_colour">#FF8E0E1C</color>
 </resources>

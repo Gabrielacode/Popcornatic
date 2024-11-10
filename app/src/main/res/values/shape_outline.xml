@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="RoundedRectShapeOverlay" parent="">
+        <item name="cornerSize">20dp</item>
+    </style>
+    <style name="RoundedRectShapeButtonShape" parent="">
+        <item name="cornerSize">16dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+    <style name="RoundedRectShapeButtonRoundedShape" parent="">
+        <item name="cornerSize">20dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+
+</resources>

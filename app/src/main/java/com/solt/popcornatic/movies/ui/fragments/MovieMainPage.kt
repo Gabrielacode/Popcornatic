@@ -1,21 +1,26 @@
-package com.solt.popcornatic.movies.ui
+package com.solt.popcornatic.movies.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.PagerSnapHelper
+import com.solt.popcornatic.R
 import com.solt.popcornatic.databinding.MovieMainPageBinding
 import com.solt.popcornatic.movies.ui.adapter.MovieListAdapter
 import com.solt.popcornatic.movies.ui.adapter.BaseMovieViewHolder
+import com.solt.popcornatic.movies.ui.adapter.MovieItemActions
 import com.solt.popcornatic.movies.ui.adapter.TrendingMovieViewHolder
 import com.solt.popcornatic.movies.ui.viewmodel.MovieMainPageViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,12 +29,12 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MovieMainPage:Fragment() {
+class MovieMainPage:Fragment(), MovieItemActions {
     lateinit var binding: MovieMainPageBinding
-    val trendingMovieAdapter = MovieListAdapter(TrendingMovieViewHolder::create)
-    val popularMovieAdapter = MovieListAdapter(BaseMovieViewHolder::create)
-    val upcomingMovieAdapter = MovieListAdapter(BaseMovieViewHolder::create)
-    val topRatedMovieAdapter = MovieListAdapter(BaseMovieViewHolder::create)
+    val trendingMovieAdapter = MovieListAdapter(TrendingMovieViewHolder::create,this)
+    val popularMovieAdapter = MovieListAdapter(BaseMovieViewHolder::create,this)
+    val upcomingMovieAdapter = MovieListAdapter(BaseMovieViewHolder::create,this)
+    val topRatedMovieAdapter = MovieListAdapter(BaseMovieViewHolder::create,this)
     val viewModel by viewModels<MovieMainPageViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,7 +75,7 @@ class MovieMainPage:Fragment() {
             layoutManager = LinearLayoutManager(requireContext()).apply {
                 orientation = LinearLayoutManager.HORIZONTAL
             }
-            LinearSnapHelper().attachToRecyclerView(this)
+           // LinearSnapHelper().attachToRecyclerView(this)
         }
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
@@ -86,7 +91,7 @@ class MovieMainPage:Fragment() {
             layoutManager = LinearLayoutManager(requireContext()).apply {
                 orientation = LinearLayoutManager.HORIZONTAL
             }
-            LinearSnapHelper().attachToRecyclerView(this)
+           // LinearSnapHelper().attachToRecyclerView(this)
 
         }
         viewLifecycleOwner.lifecycleScope.launch {
@@ -103,7 +108,7 @@ class MovieMainPage:Fragment() {
             layoutManager = LinearLayoutManager(requireContext()).apply {
                 orientation = LinearLayoutManager.HORIZONTAL
             }
-            LinearSnapHelper().attachToRecyclerView(this)
+            //LinearSnapHelper().attachToRecyclerView(this)
 
         }
         viewLifecycleOwner.lifecycleScope.launch {
@@ -113,6 +118,15 @@ class MovieMainPage:Fragment() {
                 }
             }
         }
+    }
+
+
+
+    override fun onClick( view: View,movieId: Int) {
+        // Fix Transition
+
+     val bundle = bundleOf(MOVIE_ID to movieId)
+     findNavController().navigate(R.id.action_movieMainPage_to_movieDetailsPage,bundle,null)
     }
 }
 //A function for lauching flows in a lifecycle scope

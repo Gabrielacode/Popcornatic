@@ -6,6 +6,24 @@
 
     <fragment
         android:id="@+id/movieMainPage"
-        android:name="com.solt.popcornatic.movies.ui.MovieMainPage"
-        android:label="MovieMainPage" />
+        android:name="com.solt.popcornatic.movies.ui.fragments.MovieMainPage"
+        android:label="MovieMainPage" >
+        <action
+            android:id="@+id/action_movieMainPage_to_movieDetailsPage"
+            app:destination="@id/movieDetailsPage"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailsPage"
+        android:name="com.solt.popcornatic.movies.ui.fragments.MovieDetailsPage"
+        android:label="MovieDetailsPage" >
+
+
+        <action
+            android:id="@+id/action_movieDetailsPage_self"
+            app:destination="@id/movieDetailsPage" />
+    </fragment>
+
 </navigation>

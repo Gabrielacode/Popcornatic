@@ -8,13 +8,13 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class MovieMainPageViewModel @Inject constructor(val mainPageUseCase:MovieMainPageUseCase):ViewModel() {
+class MovieMainPageViewModel @Inject constructor(val useCase:MovieMainPageUseCase):ViewModel() {
      val listOfTrendingMovies
-          get() =mainPageUseCase.getTrendingMovies().cachedIn(viewModelScope)
+          get() =useCase.getTrendingMovies().cachedIn(viewModelScope)
      val listOfPopularMovies
-          get() = mainPageUseCase.getPopularMovies().cachedIn(viewModelScope)
+          get() = useCase.getPopularMovies().cachedIn(viewModelScope)
      val listOfUpcomingMovies
-          get() = mainPageUseCase.getUpcomingMovies().cachedIn(viewModelScope)
+          get() = useCase.getUpcomingMovies().cachedIn(viewModelScope)
      val listOfTopRatedMovies
-          get() = mainPageUseCase.getTopRatedMovies().cachedIn(viewModelScope)
+          get() = useCase.getTopRatedMovies().cachedIn(viewModelScope)
 }

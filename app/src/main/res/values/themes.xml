@@ -1,8 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Popcornatic" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/main_white</item>
-        <item name="colorAccent">@color/main_blue</item>
+        <item name="colorPrimary">@color/main_blue</item>
+        <item name="colorPrimaryDark">@color/main_blue_variant</item>
+        <item name="colorSurface">@color/main_white</item>
+        <item name="cardBackgroundColor">@color/main_white</item>
+
+        <item name="imageButtonStyle">@style/ImageButton</item>
     </style>
 
     <style name="Theme.Popcornatic" parent="Base.Theme.Popcornatic" />
@@ -17,5 +21,10 @@
     </style>
     <style name="List">
         <item name="android:textSize">16sp</item>
+    </style>
+    <style name="ImageButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:backgroundTint">@android:color/transparent</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="tint">@color/main_blue</item>
     </style>
 </resources>
