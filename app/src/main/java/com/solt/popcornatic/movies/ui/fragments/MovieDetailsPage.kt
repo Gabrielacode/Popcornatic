@@ -180,7 +180,18 @@ class MovieDetailsPage:Fragment(),MovieItemActions {
                     releaseStatusBtn.text = viewModel.movieDetails.status?:"None"
                     originalLanguageBtn.text = (viewModel.movieDetails.originalLanguage?:"None") // Go to the configuration section of the api and store all languages
                     //Use Bottom Dialog Fragment for OriginCountries
-                    viewModel.movieDetails.originCountry
+                    originalCountryBtn.setOnClickListener{
+                        if (viewModel.movieDetails.originCountry != null) {
+                            val bundle =
+                                bundleOf(COUNTRY_LIST to viewModel.movieDetails.originCountry?.let { it1 ->
+                                    ArrayList(
+                                        it1
+                                    )
+                                })
+
+                            findNavController().navigate(R.id.action_movieDetailsPage_to_countryListDialog,bundle)
+                        }
+                    }
                     if(viewModel.movieDetails.genres != null){
                         genreListAdapter.submitList(viewModel.movieDetails.genres)
                     }
