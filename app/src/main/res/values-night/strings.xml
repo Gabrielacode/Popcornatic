@@ -4,4 +4,10 @@
     <string name="overview">Overview</string>
     <string name="origin_countries">Origin Countries</string>
     <string name="recommended">Recommended</string>
+    <string name="crew">Crew</string>
+    <string name="production">Production</string>
+    <string name="movies">MOVIES</string>
+    <string name="videos">VIDEOS</string>
+    <string name="images">IMAGES</string>
+    <string name="credits">CREDITS</string>
 </resources>

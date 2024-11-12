@@ -1,11 +1,11 @@
-package com.solt.popcornatic.movies.data.model.MovieDetailPackage
+package com.solt.popcornatic.movies.data.model.MovieDetailPackage.Images
 
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Backdrop(
+data class Poster(
     @SerialName("aspect_ratio")
     val aspectRatio: Double?,
     @SerialName("file_path")

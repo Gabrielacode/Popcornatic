@@ -7,8 +7,6 @@ import androidx.paging.cachedIn
 import com.solt.popcornatic.ApiResult
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.JointClasses.RecommendedMovies
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.MovieDetailResult
-import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Recommendations.MovieRecommendations
-import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Recommendations.MovieRecommendationsResult
 import com.solt.popcornatic.movies.domain.MovieDetailsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
@@ -19,7 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieDetailPageViewModel @Inject constructor(val useCase: MovieDetailsUseCase):ViewModel() {
     //Create a failure and success system
-    lateinit var movieDetails : MovieDetailResult
+
     lateinit var movieRecommendations : Flow<PagingData<RecommendedMovies>>
 
      private var _movieDetailsStateFlow = MutableStateFlow<LoadOperation>(LoadOperation.Loading())
@@ -29,14 +27,17 @@ class MovieDetailPageViewModel @Inject constructor(val useCase: MovieDetailsUseC
 
 
      suspend fun getMovieDetails(movieId:Int){
-         when (val result = useCase.getMovieDetailsById(movieId, emptyList())){
+
+         val result = useCase.getMovieDetailsById(movieId)
+         movieRecommendations = useCase.getMovieRecommendationsbyId(movieId).cachedIn(viewModelScope)
+         when (result){
              is ApiResult.Failure.ApiFailure ->{
                  _movieDetailsStateFlow.value =  LoadOperation.Failure(LoadOperation.ErrorType.NETWORK)}
 
 
              is ApiResult.Success<*> ->  {
                     val movieDetail =  result .data as MovieDetailResult
-                    this.movieDetails = movieDetail
+
                     _movieDetailsStateFlow.value = LoadOperation.Success(movieDetail)
 
              }
@@ -44,7 +45,7 @@ class MovieDetailPageViewModel @Inject constructor(val useCase: MovieDetailsUseC
 
              is ApiResult.Failure.NetworkFailure -> _movieDetailsStateFlow.value = LoadOperation.Failure(LoadOperation.ErrorType.NETWORK)
          }
-         movieRecommendations = useCase.getMovieRecommendationsbyMovieId(movieId).cachedIn(viewModelScope)
+
 }
 sealed interface LoadOperation{
     class Loading:LoadOperation

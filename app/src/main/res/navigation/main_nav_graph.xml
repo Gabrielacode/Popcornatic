@@ -24,6 +24,27 @@
         <action
             android:id="@+id/action_movieDetailsPage_self"
             app:destination="@id/movieDetailsPage" />
+        <action
+            android:id="@+id/action_movieDetailsPage_to_countryListDialog"
+            app:destination="@id/countryListDialog" />
+        <action
+            android:id="@+id/action_movieDetailsPage_to_productionCompanyDetailsBottomDialog"
+            app:destination="@id/productionCompanyDetailsBottomDialog" />
+        <action
+            android:id="@+id/action_movieDetailsPage_to_movieImageListDialog"
+            app:destination="@id/movieImageListDialog" />
     </fragment>
+    <dialog
+        android:id="@+id/countryListDialog"
+        android:name="com.solt.popcornatic.movies.ui.fragments.CountryListDialog"
+        android:label="CountryListDialog" />
+    <dialog
+        android:id="@+id/productionCompanyDetailsBottomDialog"
+        android:name="com.solt.popcornatic.movies.ui.fragments.ProductionCompanyDetailsBottomDialog"
+        android:label="ProductionCompanyDetailsBottomDialog" />
+    <dialog
+        android:id="@+id/movieImageListDialog"
+        android:name="com.solt.popcornatic.movies.ui.fragments.MovieImageListDialog"
+        android:label="MovieImageListDialog" />
 
 </navigation>

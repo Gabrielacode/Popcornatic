@@ -2,14 +2,19 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="12dp"
-    android:layout_width="120dp"
-    android:layout_height="match_parent"
-    android:layout_marginHorizontal="4dp"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    app:cardBackgroundColor="#A4C8C3AC"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="8dp"
     >
     <ImageView
-        android:id="@+id/poster_image"
+        android:id="@+id/logo_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"/>
 
 </com.google.android.material.card.MaterialCardView>
+
+
+
