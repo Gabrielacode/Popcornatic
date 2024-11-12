@@ -1,6 +1,7 @@
 package com.solt.popcornatic.movies.data.api
 
 import com.solt.popcornatic.MOVIES_PATH
+import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Images.MovieDetailImages
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.MovieDetailResult
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.ProductionCompanies.ProductionCompanyDetail
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Recommendations.MovieRecommendations
@@ -29,7 +30,7 @@ interface MovieApiImpl {
      suspend fun getPopularMovies(@Query("page")page:Int ,@Query("language")language:String): PopularApiResult
 
      @GET("$MOVIES_PATH/{movieId}")
-     suspend fun getMovieDetailOfMovieById(@Path("movieId") movieId:Int, @Query("append_to_response")appendToResponseString: String  ): MovieDetailResult
+     suspend fun getMovieDetailOfMovieById(@Path("movieId") movieId:Int  ): MovieDetailResult
      @GET("$MOVIES_PATH/{movieId}/recommendations")
      suspend fun getMovieRecommendations(@Path("movieId")movieId: Int, @Query("page")page:Int):MovieRecommendations
     @GET("$MOVIES_PATH/{movieId}/similar")
@@ -37,5 +38,6 @@ interface MovieApiImpl {
 
     @GET("company/{companyId}")
     suspend fun getProductionCompanyDetailsById(@Path("companyId")companyId:Int):ProductionCompanyDetail
-
+    @GET("$MOVIES_PATH/{movieId}/images")
+    suspend fun getImagesForMovieById(@Path("movieId")movieId:Int):MovieDetailImages
 }

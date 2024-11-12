@@ -219,6 +219,10 @@ class MovieDetailsPage:Fragment(),MovieItemActions {
                         adapter = productionCompaniesAdapter
                         productionCompaniesAdapter.submitList(data.productionCompanies)
                     }
+                    imagesSection.setOnClickListener {
+                        val bundle = bundleOf(MOVIEIMAGES to data.id)
+                        findNavController().navigate(R.id.action_movieDetailsPage_to_movieImageListDialog,bundle)
+                    }
 
 
 

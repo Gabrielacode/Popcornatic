@@ -7,16 +7,11 @@ import androidx.paging.cachedIn
 import com.solt.popcornatic.ApiResult
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.JointClasses.RecommendedMovies
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.MovieDetailResult
-import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Recommendations.MovieRecommendations
-import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Recommendations.MovieRecommendationsResult
 import com.solt.popcornatic.movies.domain.MovieDetailsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.retry
-import retrofit2.HttpException
-import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -33,8 +28,8 @@ class MovieDetailPageViewModel @Inject constructor(val useCase: MovieDetailsUseC
 
      suspend fun getMovieDetails(movieId:Int){
 
-         val result = useCase.getMovieDetailsById(movieId, emptyList())
-         movieRecommendations = useCase.getMovieRecommendationsbyMovieId(movieId).cachedIn(viewModelScope)
+         val result = useCase.getMovieDetailsById(movieId)
+         movieRecommendations = useCase.getMovieRecommendationsbyId(movieId).cachedIn(viewModelScope)
          when (result){
              is ApiResult.Failure.ApiFailure ->{
                  _movieDetailsStateFlow.value =  LoadOperation.Failure(LoadOperation.ErrorType.NETWORK)}

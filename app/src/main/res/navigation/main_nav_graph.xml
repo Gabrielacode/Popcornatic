@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_movieDetailsPage_to_productionCompanyDetailsBottomDialog"
             app:destination="@id/productionCompanyDetailsBottomDialog" />
+        <action
+            android:id="@+id/action_movieDetailsPage_to_movieImageListDialog"
+            app:destination="@id/movieImageListDialog" />
     </fragment>
     <dialog
         android:id="@+id/countryListDialog"
@@ -39,5 +42,9 @@
         android:id="@+id/productionCompanyDetailsBottomDialog"
         android:name="com.solt.popcornatic.movies.ui.fragments.ProductionCompanyDetailsBottomDialog"
         android:label="ProductionCompanyDetailsBottomDialog" />
+    <dialog
+        android:id="@+id/movieImageListDialog"
+        android:name="com.solt.popcornatic.movies.ui.fragments.MovieImageListDialog"
+        android:label="MovieImageListDialog" />
 
 </navigation>

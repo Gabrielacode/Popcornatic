@@ -10,8 +10,9 @@ interface MovieRepository {
     suspend fun getPopularMovies(page: Int,language: String?):ApiResult
     suspend fun getUpcomingMovies(page: Int,language: String?):ApiResult
     suspend fun getTopRatedMovies(page: Int,language: String?):ApiResult
-    suspend fun getMovieDetailsById(movieId:Int,appendToResponseOptions:List<AppendToResponseOptions> = listOf(AppendToResponseOptions.IMAGES,AppendToResponseOptions.VIDEOS)):ApiResult
+    suspend fun getMovieDetailsById(movieId:Int):ApiResult //Images , Videos and Credits will be fetched separately
     suspend fun getMovieRecommendations(movieId: Int,page: Int):ApiResult
     suspend fun getSimilarMovies(movieId: Int,page: Int):ApiResult
     suspend fun getProductionCompanyDetailsById(companyId:Int):ApiResult
+    suspend fun getMovieImagesById(movieId:Int):ApiResult
 }
