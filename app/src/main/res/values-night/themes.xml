@@ -21,6 +21,11 @@
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">@font/afacad_flux</item>
     </style>
+    <style name="TitleText" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/afacad_flux</item>
+    </style>
     <style name="NormalText" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/outfit</item>

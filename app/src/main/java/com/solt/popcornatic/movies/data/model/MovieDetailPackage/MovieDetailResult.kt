@@ -14,16 +14,14 @@ data class MovieDetailResult(
     val belongsToCollection: BelongsToCollection?,
     @SerialName("budget")
     val budget: Int?,
-    @SerialName("credits")
-    val credits: Credits?,
+
     @SerialName("genres")
     val genres: List<Genre>?,
     @SerialName("homepage")
     val homepage: String?,
     @SerialName("id")
     val id: Int?,
-    @SerialName("images")
-    val images: Images?,
+
     @SerialName("imdb_id")
     val imdbId: String?,
     @SerialName("origin_country")
@@ -58,8 +56,7 @@ data class MovieDetailResult(
     val title: String?,
     @SerialName("video")
     val video: Boolean?,
-    @SerialName("videos")
-    val videos: Videos?,
+
     @SerialName("vote_average")
     val voteAverage: Double?,
     @SerialName("vote_count")

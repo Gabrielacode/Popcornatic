@@ -27,10 +27,17 @@
         <action
             android:id="@+id/action_movieDetailsPage_to_countryListDialog"
             app:destination="@id/countryListDialog" />
+        <action
+            android:id="@+id/action_movieDetailsPage_to_productionCompanyDetailsBottomDialog"
+            app:destination="@id/productionCompanyDetailsBottomDialog" />
     </fragment>
     <dialog
         android:id="@+id/countryListDialog"
         android:name="com.solt.popcornatic.movies.ui.fragments.CountryListDialog"
         android:label="CountryListDialog" />
+    <dialog
+        android:id="@+id/productionCompanyDetailsBottomDialog"
+        android:name="com.solt.popcornatic.movies.ui.fragments.ProductionCompanyDetailsBottomDialog"
+        android:label="ProductionCompanyDetailsBottomDialog" />
 
 </navigation>

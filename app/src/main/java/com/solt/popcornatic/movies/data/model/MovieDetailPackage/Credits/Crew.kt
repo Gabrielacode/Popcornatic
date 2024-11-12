@@ -1,4 +1,4 @@
-package com.solt.popcornatic.movies.data.model.MovieDetailPackage
+package com.solt.popcornatic.movies.data.model.MovieDetailPackage.Credits
 
 
 import kotlinx.serialization.SerialName

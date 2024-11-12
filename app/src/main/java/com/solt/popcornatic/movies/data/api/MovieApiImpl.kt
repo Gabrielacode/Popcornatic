@@ -2,6 +2,7 @@ package com.solt.popcornatic.movies.data.api
 
 import com.solt.popcornatic.MOVIES_PATH
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.MovieDetailResult
+import com.solt.popcornatic.movies.data.model.MovieDetailPackage.ProductionCompanies.ProductionCompanyDetail
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Recommendations.MovieRecommendations
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Similar.MovieSimilar
 import com.solt.popcornatic.movies.data.model.PopularApiResult
@@ -34,5 +35,7 @@ interface MovieApiImpl {
     @GET("$MOVIES_PATH/{movieId}/similar")
     suspend fun getSimilarMovies(@Path("movieId")movieId: Int,@Query("page")page:Int):MovieSimilar
 
+    @GET("company/{companyId}")
+    suspend fun getProductionCompanyDetailsById(@Path("companyId")companyId:Int):ProductionCompanyDetail
 
 }

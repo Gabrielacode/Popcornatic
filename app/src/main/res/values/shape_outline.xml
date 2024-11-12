@@ -4,12 +4,16 @@
         <item name="cornerSize">20dp</item>
     </style>
     <style name="RoundedRectShapeButtonShape" parent="">
-        <item name="cornerSize">16dp</item>
+        <item name="cornerSize">20%</item>
         <item name="cornerFamily">rounded</item>
     </style>
     <style name="RoundedRectShapeButtonRoundedShape" parent="">
         <item name="cornerSize">20dp</item>
         <item name="cornerFamily">rounded</item>
+    </style>
+    <style name="CircularShapeOverlay" parent="">
+       <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">25%</item>
     </style>
 
 

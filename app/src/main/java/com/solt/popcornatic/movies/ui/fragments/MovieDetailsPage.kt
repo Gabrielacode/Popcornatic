@@ -3,7 +3,6 @@ package com.solt.popcornatic.movies.ui.fragments
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
@@ -12,6 +11,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.Scene
@@ -24,11 +24,11 @@ import com.solt.popcornatic.R
 import com.solt.popcornatic.databinding.MajorRootForScenesBinding
 import com.solt.popcornatic.databinding.MovieDetailPageFirstPartBinding
 import com.solt.popcornatic.databinding.MovieDetailPageSecondPartBinding
-import com.solt.popcornatic.movies.ui.adapter.BaseMovieViewHolder
+import com.solt.popcornatic.movies.data.model.MovieDetailPackage.MovieDetailResult
 import com.solt.popcornatic.movies.ui.adapter.MovieDetailGenreListAdapter
 import com.solt.popcornatic.movies.ui.adapter.MovieDetailRecommendationsAdapter
 import com.solt.popcornatic.movies.ui.adapter.MovieItemActions
-import com.solt.popcornatic.movies.ui.adapter.MovieListAdapter
+import com.solt.popcornatic.movies.ui.adapter.ProductionCompaniesListAdapter
 import com.solt.popcornatic.movies.ui.viewmodel.MovieDetailPageViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -44,10 +44,18 @@ class MovieDetailsPage:Fragment(),MovieItemActions {
     var isOnSecondPartBinding = false
     val genreListAdapter = MovieDetailGenreListAdapter()
     val recommendationsAdapter = MovieDetailRecommendationsAdapter(this)
+    val productionCompanyMovieItemActions = object :MovieItemActions{
+        override fun onClick(view: View, movieId: Int) {
+            val bundle = bundleOf(COMPANY_ID to movieId)
+            view.findNavController().navigate(R.id.action_movieDetailsPage_to_productionCompanyDetailsBottomDialog,bundle)
+        }
+
+    }
+    val productionCompaniesAdapter = ProductionCompaniesListAdapter(productionCompanyMovieItemActions)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        runBlocking {
+        lifecycleScope.launch {
             val movieId = arguments?.getInt(MOVIE_ID)
             if (movieId != null) {
                 viewModel.getMovieDetails(movieId)
@@ -140,7 +148,8 @@ class MovieDetailsPage:Fragment(),MovieItemActions {
 
             is MovieDetailPageViewModel.LoadOperation.Success<*> -> {
                 majorRootForScenesBinding.titleTv.apply {
-                    text = viewModel.movieDetails.title
+                    val data = loadState.data as MovieDetailResult
+                    text = data.title
                 }
 
             }
@@ -153,9 +162,10 @@ class MovieDetailsPage:Fragment(),MovieItemActions {
             is MovieDetailPageViewModel.LoadOperation.Failure -> {}
             is MovieDetailPageViewModel.LoadOperation.Loading -> {}
             is MovieDetailPageViewModel.LoadOperation.Success<*> -> {
+                val data = loadState.data as MovieDetailResult
                 this.posterImageView.apply {
                     Glide.with(this)
-                        .load("$BASE_IMAGE_URL$POSTER_IMAGE_SIZE${viewModel.movieDetails.posterPath}")
+                        .load("$BASE_IMAGE_URL$POSTER_IMAGE_SIZE${data.posterPath}")
                         .placeholder(
                             R.drawable.ic_launcher_foreground
                         ).fitCenter().into(this)
@@ -169,38 +179,47 @@ class MovieDetailsPage:Fragment(),MovieItemActions {
             is MovieDetailPageViewModel.LoadOperation.Failure -> {}
             is MovieDetailPageViewModel.LoadOperation.Loading -> {}
             is MovieDetailPageViewModel.LoadOperation.Success<*> -> {
+                val data = loadState.data as MovieDetailResult
                 apply {
-                    popularityTv.text = (viewModel.movieDetails.popularity?:0).toString()
-                    voteRatingTv.text=(viewModel.movieDetails.voteCount?:0).toString()
-                    val voteAvg = Math.round(((viewModel.movieDetails.voteAverage ?:0.0)*100)/10).toInt()
-                    voteAvgTv.text ="$voteAvg %"
-                    overviewTv.text = viewModel.movieDetails.overview
-                    originalTitleTv.text = viewModel.movieDetails.originalTitle?:"None"
-                    releaseDateBtn.text = viewModel.movieDetails.releaseDate?:"Not Yet"
-                    releaseStatusBtn.text = viewModel.movieDetails.status?:"None"
-                    originalLanguageBtn.text = (viewModel.movieDetails.originalLanguage?:"None") // Go to the configuration section of the api and store all languages
+                    popularityTv.text = (data.popularity?:0).toString()
+                    voteRatingTv.text=(data.voteCount?:0).toString()
+                    val voteAvg = Math.round(((data.voteAverage ?:0.0)*100)/10).toInt()
+                    voteAvgTv.text ="$voteAvg%"
+                    overviewTv.text = data.overview
+                    originalTitleTv.text = data.originalTitle?:""
+                    releaseDateBtn.text = data.releaseDate?:"Not Yet"
+                    releaseStatusBtn.text = data.status?:""
+                    originalLanguageBtn.text = (data.originalLanguage?:"None") // Go to the configuration section of the api and store all languages
                     //Use Bottom Dialog Fragment for OriginCountries
                     originalCountryBtn.setOnClickListener{
-                        if (viewModel.movieDetails.originCountry != null) {
+                        if (data.originCountry != null) {
                             val bundle =
-                                bundleOf(COUNTRY_LIST to viewModel.movieDetails.originCountry?.let { it1 ->
-                                    ArrayList(
-                                        it1
-                                    )
-                                })
+                                bundleOf(COUNTRY_LIST to ArrayList(
+                                    data.originCountry
+                                )
+                                )
 
                             findNavController().navigate(R.id.action_movieDetailsPage_to_countryListDialog,bundle)
                         }
                     }
-                    if(viewModel.movieDetails.genres != null){
-                        genreListAdapter.submitList(viewModel.movieDetails.genres)
+                    if(data.genres != null){
+                        genreListAdapter.submitList(data.genres)
                     }
                     viewLifecycleOwner.lifecycleScope.launch {
                         viewModel.movieRecommendations.collect{
+
                             recommendationsAdapter.submitData(it)
 
                         }
                     }
+
+                    //Production Companies
+                    productionCompaniesList.apply {
+                        layoutManager= LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+                        adapter = productionCompaniesAdapter
+                        productionCompaniesAdapter.submitList(data.productionCompanies)
+                    }
+
 
 
 

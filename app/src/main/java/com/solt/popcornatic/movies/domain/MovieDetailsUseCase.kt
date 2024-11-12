@@ -8,4 +8,5 @@ import javax.inject.Inject
 class MovieDetailsUseCase @Inject constructor(val movieRepo:MovieRepositoryImpl,val pagedMovieRepository: PagedMovieRepository) {
      suspend fun getMovieDetailsById(movieId :Int,appendToResponseOptionsList: List<AppendToResponseOptions> ) = movieRepo.getMovieDetailsById(movieId,appendToResponseOptionsList)
      suspend fun getMovieRecommendationsbyMovieId(movieId: Int) = pagedMovieRepository.getPagedReccommendedMovies(movieId)
+
 }
