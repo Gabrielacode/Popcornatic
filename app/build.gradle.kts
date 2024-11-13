@@ -99,6 +99,9 @@ dependencies {
     //Browser and Custom Tabs
 
     implementation ("androidx.browser:browser:1.8.0")
+    //Youtube Video Player
+    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.1")
+    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:custom-ui:12.1.1")
 }
 kapt{
     correctErrorTypes = true

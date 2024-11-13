@@ -16,4 +16,5 @@ interface MovieRepository {
     suspend fun getProductionCompanyDetailsById(companyId:Int):ApiResult
     suspend fun getMovieImagesById(movieId:Int):ApiResult
     suspend fun getMovieCreditsById(movieId: Int):ApiResult
+    suspend fun  getMovieVideosById(movieId: Int):ApiResult
 }

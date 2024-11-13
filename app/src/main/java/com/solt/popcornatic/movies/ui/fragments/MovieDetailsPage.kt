@@ -227,6 +227,10 @@ class MovieDetailsPage:Fragment(),MovieItemActions {
                         val bundle = bundleOf(CREDITS to data.id)
                         findNavController().navigate(R.id.action_movieDetailsPage_to_creditsDialog,bundle)
                     }
+                    videosSection.setOnClickListener {
+                        val bundle = bundleOf(VIDEO to data.id)
+                        findNavController().navigate(R.id.action_movieDetailsPage_to_movieVideoListPage,bundle)
+                    }
 
 
 

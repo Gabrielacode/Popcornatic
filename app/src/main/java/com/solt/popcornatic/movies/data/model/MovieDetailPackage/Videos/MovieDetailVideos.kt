@@ -9,5 +9,5 @@ data class MovieDetailVideos(
     @SerialName("id")
     val id: Int?,
     @SerialName("results")
-    val results: List<Result?>?
+    val videoResults: List<VideoResult?>?
 )

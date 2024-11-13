@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Result(
+data class VideoResult(
     @SerialName("id")
     val id: String?,
     @SerialName("iso_3166_1")

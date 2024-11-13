@@ -7,6 +7,7 @@ import com.solt.popcornatic.movies.data.model.MovieDetailPackage.MovieDetailResu
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.ProductionCompanies.ProductionCompanyDetail
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Recommendations.MovieRecommendations
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Similar.MovieSimilar
+import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Videos.MovieDetailVideos
 import com.solt.popcornatic.movies.data.model.PopularApiResult
 import com.solt.popcornatic.movies.data.model.TopRatedApiResult
 import com.solt.popcornatic.movies.data.model.TrendingApiResult
@@ -43,4 +44,7 @@ interface MovieApiImpl {
     suspend fun getImagesForMovieById(@Path("movieId")movieId:Int):MovieDetailImages
     @GET("$MOVIES_PATH/{movieId}/credits")
     suspend fun getCreditsforMovieById(@Path("movieId")movieId: Int):MovieDetailCredits
+    @GET("$MOVIES_PATH/{movieId}/videos")
+    suspend fun getVideosForMovieById(@Path("movieId")movieId: Int):MovieDetailVideos
+
 }
