@@ -21,5 +21,5 @@ data class ProductionCompanyDetail(
     @SerialName("origin_country")
     val originCountry: String?,
     @SerialName("parent_company")
-    val parentCompany: String?
+    val parentCompany: ParentCompany?
 )

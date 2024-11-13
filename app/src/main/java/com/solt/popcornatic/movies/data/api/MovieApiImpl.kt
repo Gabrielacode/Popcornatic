@@ -1,6 +1,7 @@
 package com.solt.popcornatic.movies.data.api
 
 import com.solt.popcornatic.MOVIES_PATH
+import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Credits.MovieDetailCredits
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Images.MovieDetailImages
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.MovieDetailResult
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.ProductionCompanies.ProductionCompanyDetail
@@ -37,7 +38,9 @@ interface MovieApiImpl {
     suspend fun getSimilarMovies(@Path("movieId")movieId: Int,@Query("page")page:Int):MovieSimilar
 
     @GET("company/{companyId}")
-    suspend fun getProductionCompanyDetailsById(@Path("companyId")companyId:Int):ProductionCompanyDetail
+    suspend fun getProductionCompanyDetailsById(@Path("companyId")companyId:Int): ProductionCompanyDetail
     @GET("$MOVIES_PATH/{movieId}/images")
     suspend fun getImagesForMovieById(@Path("movieId")movieId:Int):MovieDetailImages
+    @GET("$MOVIES_PATH/{movieId}/credits")
+    suspend fun getCreditsforMovieById(@Path("movieId")movieId: Int):MovieDetailCredits
 }

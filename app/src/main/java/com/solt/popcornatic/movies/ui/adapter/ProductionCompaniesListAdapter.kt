@@ -38,7 +38,7 @@ class ProductionCompaniesListAdapter (val movieItemActions: MovieItemActions):Li
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductionCompanyViewHolder {
       val binding  = ProductionCompanyListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return ProductionCompanyViewHolder(binding,movieItemActions)
+      return ProductionCompanyViewHolder(binding,movieItemActions)
     }
 
     override fun onBindViewHolder(holder: ProductionCompanyViewHolder, position: Int) {

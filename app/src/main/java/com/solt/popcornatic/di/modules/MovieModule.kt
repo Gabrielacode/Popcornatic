@@ -16,6 +16,7 @@ import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Response
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
@@ -32,12 +33,17 @@ import javax.inject.Singleton
             override fun intercept(chain: Interceptor.Chain): Response {
                 val request = chain.request()
                 Log.i("HttpRetro",request.toString()+request.headers.toString())
+                Log.i("HttpRetro",request.body.toString())
 
                 return chain.proceed(request).also {
                     Log.i("HttpRetro",it.toString()+it.headers.toString())
+                    Log.i("HttpRetro",it.body.toString())
                 }
             }
 
+        }
+        val httpLoggingInterceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
         }
         val apiKeyAuthorizationInterceptor = object:Interceptor{
             override fun intercept(chain: Interceptor.Chain): Response {
@@ -51,7 +57,7 @@ import javax.inject.Singleton
         }
      return OkHttpClient.Builder()
          .addInterceptor(apiKeyAuthorizationInterceptor)
-         .addInterceptor(logging)
+         .addInterceptor(httpLoggingInterceptor)
             .build()
 
 

@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.solt.popcornatic.ApiResult
-import com.solt.popcornatic.databinding.ImageVideoLayoutBinding
+
+import com.solt.popcornatic.databinding.ListDialogLayoutBinding
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Images.MovieDetailImages
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Images.toImage
 import com.solt.popcornatic.movies.data.repository.MovieRepositoryImpl
@@ -19,8 +20,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 const val MOVIEIMAGES = "movies_images"
 @AndroidEntryPoint
-class MovieImageListDialog:BottomSheetDialogFragment() {
-    lateinit var binding:ImageVideoLayoutBinding
+class MovieImageListPage: Fragment() {
+    lateinit var binding:ListDialogLayoutBinding
     @Inject
     lateinit var repository:MovieRepositoryImpl
     val imageAdapter = MovieImageListAdapter()
@@ -30,7 +31,7 @@ class MovieImageListDialog:BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = ImageVideoLayoutBinding.inflate(inflater,container,false)
+        binding = ListDialogLayoutBinding.inflate(inflater,container,false)
         return binding.root
     }
 

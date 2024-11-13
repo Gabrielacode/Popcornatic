@@ -30,9 +30,13 @@
         <action
             android:id="@+id/action_movieDetailsPage_to_productionCompanyDetailsBottomDialog"
             app:destination="@id/productionCompanyDetailsBottomDialog" />
+
         <action
-            android:id="@+id/action_movieDetailsPage_to_movieImageListDialog"
-            app:destination="@id/movieImageListDialog" />
+            android:id="@+id/action_movieDetailsPage_to_creditsDialog"
+            app:destination="@id/creditsDialog" />
+        <action
+            android:id="@+id/action_movieDetailsPage_to_movieImageListPage"
+            app:destination="@id/movieImageListPage" />
     </fragment>
     <dialog
         android:id="@+id/countryListDialog"
@@ -42,9 +46,14 @@
         android:id="@+id/productionCompanyDetailsBottomDialog"
         android:name="com.solt.popcornatic.movies.ui.fragments.ProductionCompanyDetailsBottomDialog"
         android:label="ProductionCompanyDetailsBottomDialog" />
-    <dialog
-        android:id="@+id/movieImageListDialog"
-        android:name="com.solt.popcornatic.movies.ui.fragments.MovieImageListDialog"
-        android:label="MovieImageListDialog" />
+
+    <fragment
+        android:id="@+id/creditsDialog"
+        android:name="com.solt.popcornatic.movies.ui.fragments.CreditsPage"
+        android:label="CreditsDialog" />
+    <fragment
+        android:id="@+id/movieImageListPage"
+        android:name="com.solt.popcornatic.movies.ui.fragments.MovieImageListPage"
+        android:label="MovieImageListPage" />
 
 </navigation>

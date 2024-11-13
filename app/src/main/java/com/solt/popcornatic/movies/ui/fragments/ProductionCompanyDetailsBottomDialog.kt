@@ -12,17 +12,12 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.solt.popcornatic.ApiResult
 import com.solt.popcornatic.BASE_IMAGE_URL
 import com.solt.popcornatic.POSTER_IMAGE_SIZE
-import com.solt.popcornatic.R
 import com.solt.popcornatic.databinding.ProductionCompanyDetailsLayoutBinding
-import com.solt.popcornatic.databinding.ProductionCompanyListItemBinding
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.ProductionCompanies.ProductionCompanyDetail
-import com.solt.popcornatic.movies.data.repository.MovieRepository
 import com.solt.popcornatic.movies.data.repository.MovieRepositoryImpl
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.properties.Delegates
 
 const val COMPANY_ID = "companyId"
 @AndroidEntryPoint

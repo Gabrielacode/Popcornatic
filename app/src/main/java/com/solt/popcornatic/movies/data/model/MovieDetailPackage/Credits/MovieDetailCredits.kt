@@ -7,9 +7,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class MovieDetailCredits(
     @SerialName("cast")
-    val cast: List<Cast?>?,
+    val cast: List<Cast>?,
     @SerialName("crew")
-    val crew: List<Crew?>?,
+    val crew: List<Crew>?,
     @SerialName("id")
     val id: Int?
 )
