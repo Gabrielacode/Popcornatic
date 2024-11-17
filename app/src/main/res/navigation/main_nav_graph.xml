@@ -2,7 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/movieMainPage">
+    app:startDestination="@id/movieMainPage"
+    >
 
     <fragment
         android:id="@+id/movieMainPage"
@@ -62,5 +63,25 @@
         android:id="@+id/movieVideoListPage"
         android:name="com.solt.popcornatic.movies.ui.fragments.MovieVideoListPage"
         android:label="MovieVideoListPage" />
+    <fragment
+        android:id="@+id/tvMainPage"
+        android:name="com.solt.popcornatic.tvshows.ui.fragments.TvMainPage"
+        android:label="TvMainPage" >
+        <action
+            android:id="@+id/action_tvMainPage_to_tvDetailsPage"
+            app:destination="@id/tvDetailsPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/tvDetailsPage"
+        android:name="com.solt.popcornatic.tvshows.ui.fragments.TvDetailsPage"
+        android:label="TvDetailsPage" >
+        <action
+            android:id="@+id/action_tvDetailsPage_to_tvShowSeasonandEpisodesPage"
+            app:destination="@id/tvShowSeasonandEpisodesPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/tvShowSeasonandEpisodesPage"
+        android:name="com.solt.popcornatic.tvshows.ui.fragments.TvShowSeasonandEpisodesPage"
+        android:label="TvShowSeasonandEpisodesPage" />
 
 </navigation>

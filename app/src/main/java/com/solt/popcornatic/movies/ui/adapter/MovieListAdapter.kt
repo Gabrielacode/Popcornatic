@@ -9,8 +9,9 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.solt.popcornatic.BASE_IMAGE_URL
 import com.solt.popcornatic.POSTER_IMAGE_SIZE
+import com.solt.popcornatic.databinding.MainpageItemBinding
 import com.solt.popcornatic.databinding.MovieItemBinding
-import com.solt.popcornatic.databinding.MovieMainpageItemBinding
+
 import com.solt.popcornatic.databinding.TrendingMovieItemBinding
 import com.solt.popcornatic.movies.data.model.MovieResult
 
@@ -62,7 +63,7 @@ class TrendingMovieViewHolder(val binding: TrendingMovieItemBinding, val movieIt
     }
 }
 //Later on they might be different for each
-class BaseMovieViewHolder(val binding: MovieMainpageItemBinding,val movieItemActions: MovieItemActions):MovieViewHolder(binding.root) {
+class BaseMovieViewHolder(val binding: MainpageItemBinding,val movieItemActions: MovieItemActions):MovieViewHolder(binding.root) {
     override fun bind(movieResult: MovieResult?) {
         if (movieResult!=null) {
             Glide.with(binding.posterImage).load("$BASE_IMAGE_URL$POSTER_IMAGE_SIZE${movieResult.poster_path?:movieResult.backdrop_path}").into(binding.posterImage)
@@ -73,7 +74,7 @@ class BaseMovieViewHolder(val binding: MovieMainpageItemBinding,val movieItemAct
     }
     companion object{
         fun create(layoutInflater: LayoutInflater,parent: ViewGroup,movieItemActions: MovieItemActions):BaseMovieViewHolder{
-            return BaseMovieViewHolder(MovieMainpageItemBinding.inflate(layoutInflater,parent,false),movieItemActions)
+            return BaseMovieViewHolder(MainpageItemBinding.inflate(layoutInflater,parent,false),movieItemActions)
 
         }
     }

@@ -85,16 +85,16 @@ class MovieDetailsPage:Fragment(),MovieItemActions {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        secondPartBinding.genreList.apply {
+            layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+            adapter = genreListAdapter
+        }
+        secondPartBinding.recommendationsList.apply {
+            layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+            adapter = recommendationsAdapter
+        }
         viewLifecycleOwner.lifecycleScope.launch {
           //Initialize Adapters
-            secondPartBinding.genreList.apply {
-                layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-                adapter = genreListAdapter
-            }
-            secondPartBinding.recommendationsList.apply {
-                layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-                adapter = recommendationsAdapter
-            }
             viewModel.movieDetailsStateFlow.collectLatest {
                 bindState(it)
                 firstPartBinding.bindLoadState(it)

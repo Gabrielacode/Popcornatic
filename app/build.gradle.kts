@@ -96,6 +96,9 @@ dependencies {
     //Dagger Hilt
     implementation("com.google.dagger:hilt-android:$dagger_version")
     kapt("com.google.dagger:hilt-android-compiler:$dagger_version")
+    implementation ("androidx.hilt:hilt-navigation-fragment:1.0.0")
+
+
     //Browser and Custom Tabs
 
     implementation ("androidx.browser:browser:1.8.0")

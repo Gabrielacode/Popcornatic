@@ -13,4 +13,8 @@
     <string name="videos">VIDEOS</string>
     <string name="images">IMAGES</string>
     <string name="credits">CREDITS</string>
+    <string name="trending">Trending</string>
+    <string name="watch_now">Watch Now</string>
+    <string name="on_air">On Air</string>
+    <string name="tv_shows">TV SHOWS</string>
 </resources>

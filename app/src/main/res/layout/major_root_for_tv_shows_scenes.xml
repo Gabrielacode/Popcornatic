@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="10dp"
+    android:paddingVertical="16dp"
+    xmlns:tools ="http://schemas.android.com/tools">
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/titleTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_filled_rounded_rect"
+        android:fontFamily="@font/afacad_flux"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textColor="@color/main_black"
+        tools:text="The Terrifier 3"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"
+        />
+    <FrameLayout
+        android:id="@+id/root_scene_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <include  android:id="@+id/scene" layout="@layout/tvshow_detail_page_first_part"/>
+    </FrameLayout>
+
+</LinearLayout>

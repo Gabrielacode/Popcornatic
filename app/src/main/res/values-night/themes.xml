@@ -14,7 +14,13 @@
         <item name="colorSecondaryVariant">@color/main_yellow_variant</item>
         <item name="imageButtonStyle">@style/ImageButton</item>
         <item name="cardBackgroundColor">@color/main_surface_colour</item>
+        <item name="bottomNavigationStyle">@style/BottomNavCustom</item>
 
+
+    </style>
+    <style name="BottomNavCustom" parent="Widget.Design.BottomNavigationView">
+        <item name="itemIconTint">?attr/colorPrimary</item>
+        <item name="background">?attr/colorSurface</item>
     </style>
     <style name="LabelText" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">20sp</item>

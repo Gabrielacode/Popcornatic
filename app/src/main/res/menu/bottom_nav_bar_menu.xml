@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/movieMainPage"
+    android:title="@string/movies"
+    android:icon="@drawable/movie_bottomnav_menu_icon"/>
+    <item android:id="@+id/tvMainPage"
+        android:title ="@string/tv_shows"
+        android:icon="@drawable/tv_show_bottomnav_menu_icon"/>
+</menu>

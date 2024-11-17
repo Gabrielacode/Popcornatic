@@ -4,9 +4,7 @@ import android.util.Log
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.solt.popcornatic.BASE_URL
 import com.solt.popcornatic.movies.data.api.MovieApiImpl
-import com.solt.popcornatic.movies.data.repository.MovieRepository
-import com.solt.popcornatic.movies.data.repository.MovieRepositoryImpl
-import dagger.Binds
+import com.solt.popcornatic.tvshows.data.remote.api.TvShowsApiImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,7 +20,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
- class MovieModule {
+ class MainModule {
     private var json = Json { this.ignoreUnknownKeys = true }
 
     @Provides
@@ -80,5 +78,10 @@ import javax.inject.Singleton
      fun providesMoviesApi(retrofit: Retrofit):MovieApiImpl{
          return retrofit.create(MovieApiImpl::class.java)
      }
+    @Provides
+    @Singleton
+    fun providesTvShowsApi(retrofit: Retrofit):TvShowsApiImpl{
+        return retrofit.create(TvShowsApiImpl::class.java)
+    }
 
 }

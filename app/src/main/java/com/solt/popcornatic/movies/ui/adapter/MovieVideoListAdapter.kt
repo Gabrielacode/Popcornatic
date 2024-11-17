@@ -38,7 +38,7 @@ class MovieVideoListAdapter( val lifecycle: Lifecycle):ListAdapter<VideoResult,M
                 lifecycle.addObserver(this)
                 getYouTubePlayerWhenReady(object :YouTubePlayerCallback{
                     override fun onYouTubePlayer(youTubePlayer: YouTubePlayer) {
-                       youTubePlayer.loadOrCueVideo(lifecycle,videoDetails.key,0.0f)
+                       youTubePlayer.cueVideo(videoDetails.key?:"",0.0f)
                     }
 
                 })

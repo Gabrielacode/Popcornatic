@@ -13,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -46,6 +47,7 @@ class MovieMainPage:Fragment(), MovieItemActions {
         savedInstanceState: Bundle?
     ): View {
         binding = MovieMainPageBinding.inflate(inflater,container,false)
+
         return binding.root
     }
 
@@ -53,7 +55,7 @@ class MovieMainPage:Fragment(), MovieItemActions {
         super.onViewCreated(view, savedInstanceState)
 
         //Trending Movies
-        binding.trendingMovieList.apply {
+        binding.trendingMoviesList.apply {
             adapter = trendingMovieAdapter
             layoutManager = LinearLayoutManager(requireContext()).apply {
                 orientation = LinearLayoutManager.HORIZONTAL
@@ -70,7 +72,7 @@ class MovieMainPage:Fragment(), MovieItemActions {
                 }
             }
        //Popular Movies
-        binding.popularMovieList.apply {
+        binding.popularMoviesList.apply {
             adapter = popularMovieAdapter
             layoutManager = LinearLayoutManager(requireContext()).apply {
                 orientation = LinearLayoutManager.HORIZONTAL
@@ -86,7 +88,7 @@ class MovieMainPage:Fragment(), MovieItemActions {
         }
 
         //Upcoming Movies
-        binding.upcomingMovieList.apply {
+        binding.upcomingMoviesList.apply {
             adapter =upcomingMovieAdapter
             layoutManager = LinearLayoutManager(requireContext()).apply {
                 orientation = LinearLayoutManager.HORIZONTAL
@@ -118,6 +120,11 @@ class MovieMainPage:Fragment(), MovieItemActions {
                 }
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        binding.bottomNavBar.setupWithNavController(findNavController())
     }
 
 
