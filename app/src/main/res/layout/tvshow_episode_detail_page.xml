@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent">
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/popularityTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/popularity_icon"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/outfit"
+
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+
+            app:layout_constraintBottom_toBottomOf="@+id/vote_avg_Tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="324565" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/vote_avg_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/afacad_flux"
+            android:textSize="36sp"
+
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="32%" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/vote_rating_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:drawableEnd="@drawable/vote_rating_icon"
+            android:drawablePadding="6dp"
+            android:fontFamily="@font/outfit"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+
+
+            app:layout_constraintBottom_toBottomOf="@+id/vote_avg_Tv"
+            app:layout_constraintEnd_toStartOf="@+id/popularityTv"
+            tools:text="324565" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vote_avg_Tv">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="4dp">
+
+                <TextView
+                    android:id="@+id/original_title_label_Tv"
+                    style="@style/LabelText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/original_title" />
+
+                <TextView
+                    android:id="@+id/original_title_Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily=""
+                    tools:text="ksdksdkskdjksjdkjskdksdksk" />
+
+                <TextView
+                    android:id="@+id/overview_label_Tv"
+                    style="@style/LabelText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/overview" />
+
+                <TextView
+                    android:id="@+id/overview_Tv"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="4dp" />
+                <TextView
+                    android:id="@+id/aired_date_label_Tv"
+                    style="@style/LabelText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/aired" />
+                <TextView
+                    android:id="@+id/aired_date_Tv"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="4dp" />
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/guest_stars_label_Tv"
+            style="@style/LabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/guest_stars"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/guest_stars_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guest_stars_label_Tv" />
+
+        <TextView
+            android:id="@+id/crew_label_Tv"
+            style="@style/LabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/crew"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guest_stars_list" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/crew_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/crew_label_Tv" />
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>
+
+
+
+

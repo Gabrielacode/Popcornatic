@@ -32,8 +32,20 @@ const val TV_SHOWS_ID = "tvShowId"
 class TvDetailsPage: Fragment() {
     lateinit var rootBinding: MajorRootForTvShowsScenesBinding
     lateinit var firstSceneBinding :TvshowDetailPageFirstPartBinding
+    //We will save the tv show id in the fragment since the viewmodel is scoped to the nav graph
 
+    var tvShowId:Int? = null
  val viewModel:TvShowsDetailPageViewModel   by hiltNavGraphViewModels<TvShowsDetailPageViewModel>(R.id.main_nav_graph)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tvShowId = arguments?.getInt(TV_SHOWS_ID)
+        if (tvShowId!= null){
+           this.tvShowId = tvShowId
+        }else findNavController().popBackStack()
+
+    }
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -47,16 +59,23 @@ class TvDetailsPage: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(this.tvShowId != viewModel.tvShowId){
+            if(this.tvShowId == null){
+                findNavController().popBackStack()
+            }else{
+                viewLifecycleOwner.lifecycleScope.launch {
+                    viewModel.getTvShow(tvShowId!!)
+                }
 
+            }
+
+        }
 
         firstSceneBinding.seasonsBtn.setOnClickListener {
             findNavController().navigate(R.id.action_tvDetailsPage_to_tvShowSeasonandEpisodesPage)
         }
         viewLifecycleOwner.lifecycleScope.launch {
-            val tvShowId = arguments?.getInt(TV_SHOWS_ID)
-            if (tvShowId!= null){
-                viewModel.getTvShow(tvShowId)
-            }else findNavController().popBackStack()
+
 
             viewModel.tvShowDetailsStateFlow.collectLatest {
 
@@ -106,6 +125,6 @@ class TvDetailsPage: Fragment() {
             }
         }
     }
-    fun getViewModel() = this.hiltNavGraphViewModels<TvShowsDetailPageViewModel>(R.navigation.main_nav_graph)
+
 
 }

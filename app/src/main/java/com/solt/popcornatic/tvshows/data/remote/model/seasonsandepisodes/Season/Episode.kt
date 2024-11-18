@@ -13,7 +13,7 @@ data class Episode(
     @SerialName("episode_number")
     val episodeNumber: Int?,
     @SerialName("episode_type")
-    val episodeType: String?,
+    val episodeType: String? ="",
     @SerialName("guest_stars")
     val guestStars: List<GuestStar?>?,
     @SerialName("id")
@@ -29,7 +29,7 @@ data class Episode(
     @SerialName("season_number")
     val seasonNumber: Int?,
     @SerialName("show_id")
-    val showId: Int?,
+    val showId: Int? =0,
     @SerialName("still_path")
     val stillPath: String?,
     @SerialName("vote_average")

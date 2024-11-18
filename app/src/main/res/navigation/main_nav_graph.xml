@@ -82,6 +82,21 @@
     <fragment
         android:id="@+id/tvShowSeasonandEpisodesPage"
         android:name="com.solt.popcornatic.tvshows.ui.fragments.TvShowSeasonandEpisodesPage"
-        android:label="TvShowSeasonandEpisodesPage" />
+        android:label="TvShowSeasonandEpisodesPage" >
+        <action
+            android:id="@+id/action_tvShowSeasonandEpisodesPage_to_tvShowSeasonDetailPage"
+            app:destination="@id/tvShowSeasonDetailPage" />
+        <action
+            android:id="@+id/action_tvShowSeasonandEpisodesPage_to_tvShowEpisodeDetailPage"
+            app:destination="@id/tvShowEpisodeDetailPage" />
+    </fragment>
+    <dialog
+        android:id="@+id/tvShowSeasonDetailPage"
+        android:name="com.solt.popcornatic.tvshows.ui.fragments.TvShowSeasonDetailPage"
+        android:label="TvShowSeasonDetailPage" />
+    <dialog
+        android:id="@+id/tvShowEpisodeDetailPage"
+        android:name="com.solt.popcornatic.tvshows.ui.fragments.TvShowEpisodeDetailPage"
+        android:label="TvShowEpisodeDetailPage" />
 
 </navigation>

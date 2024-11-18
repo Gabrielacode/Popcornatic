@@ -13,4 +13,6 @@
     <string name="trending">Trending</string>
     <string name="watch_now">Watch Now</string>
     <string name="on_air">On Air</string>
+    <string name="aired">Aired</string>
+    <string name="guest_stars">Guest Stars</string>
 </resources>

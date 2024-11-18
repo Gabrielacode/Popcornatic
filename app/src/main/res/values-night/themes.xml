@@ -17,6 +17,7 @@
         <item name="bottomNavigationStyle">@style/BottomNavCustom</item>
 
 
+
     </style>
     <style name="BottomNavCustom" parent="Widget.Design.BottomNavigationView">
         <item name="itemIconTint">?attr/colorPrimary</item>

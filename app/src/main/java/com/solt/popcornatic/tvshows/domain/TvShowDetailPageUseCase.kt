@@ -5,4 +5,5 @@ import javax.inject.Inject
 
 class TvShowDetailPageUseCase @Inject constructor(val repository: TvShowsRepositoryImpl) {
      suspend fun getTvShowById(id:Int) = repository.getTvShowById(id)
+     suspend fun getTvShowSeason(id:Int, seasonNumber:Int) = repository.getTvShowSeason(id,seasonNumber)
 }
