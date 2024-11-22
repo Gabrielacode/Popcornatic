@@ -7,6 +7,10 @@
         <item name="cornerSize">20%</item>
         <item name="cornerFamily">rounded</item>
     </style>
+    <style name="RectShapeButtonShape" parent="">
+        <item name="cornerSize">20dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
     <style name="RoundedRectShapeButtonRoundedShape" parent="">
         <item name="cornerSize">20dp</item>
         <item name="cornerFamily">rounded</item>

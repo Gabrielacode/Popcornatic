@@ -1,7 +1,6 @@
 package com.solt.popcornatic.movies.data.paging.source
 
-import android.net.http.HttpException
-import android.util.Log
+
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.solt.popcornatic.ApiResult
@@ -12,7 +11,7 @@ import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Recommendations
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Similar.MovieSimilar
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Similar.MovieSimilarResult
 import com.solt.popcornatic.movies.data.repository.MovieRepositoryImpl
-import retrofit2.http.HTTP
+
 import java.io.IOException
 
 class MovieRecommendationsPagingSource ( val movieId:Int, val startingPageNumber:Int, val movieRepository: MovieRepositoryImpl):PagingSource<Int,RecommendedMovies>() {
@@ -34,8 +33,7 @@ class MovieRecommendationsPagingSource ( val movieId:Int, val startingPageNumber
         //If one only worked we return only one of them
         //If both didnt work we return an error
        return when{
-
-            movieRecommendationsResult is ApiResult.Success<*> && movieSimilarResult is ApiResult.Success<*> ->{
+           movieRecommendationsResult is ApiResult.Success<*> && movieSimilarResult is ApiResult.Success<*> ->{
                 val movieRecommendations = movieRecommendationsResult.data as MovieRecommendations
                 val similarMovies = movieSimilarResult.data as MovieSimilar
                 val list1  = movieRecommendations.movieRecommendationsResults?.map { it.mapToRecommendedMovies() }

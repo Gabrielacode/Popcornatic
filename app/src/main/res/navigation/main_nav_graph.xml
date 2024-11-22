@@ -98,5 +98,27 @@
         android:id="@+id/tvShowEpisodeDetailPage"
         android:name="com.solt.popcornatic.tvshows.ui.fragments.TvShowEpisodeDetailPage"
         android:label="TvShowEpisodeDetailPage" />
+    <fragment
+        android:id="@+id/searchAndDiscoverPage"
+        android:name="com.solt.popcornatic.searchanddiscover.ui.fragments.SearchAndDiscoverPage"
+        android:label="SearchAndDiscoverPage" >
+        <action
+            android:id="@+id/action_searchAndDiscoverPage_to_optionSelectorDialog"
+            app:destination="@id/optionSelectorDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/genreBottomDialog"
+        android:name="com.solt.popcornatic.searchanddiscover.ui.fragments.discoveroptionsFragments.GenreBottomDialog"
+        android:label="GenreBottomDialog" />
+    <dialog
+        android:id="@+id/optionSelectorDialog"
+        android:name="com.solt.popcornatic.searchanddiscover.ui.fragments.discoveroptionsFragments.OptionSelectorDialog"
+        android:label="OptionSelectorDialog" >
+        <action
+            android:id="@+id/action_optionSelectorDialog_to_genreBottomDialog"
+            app:destination="@id/genreBottomDialog"
+            app:popUpTo="@id/searchAndDiscoverPage"
+            app:popUpToInclusive="false" />
+    </dialog>
 
 </navigation>

@@ -4,6 +4,8 @@ import android.util.Log
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.solt.popcornatic.BASE_URL
 import com.solt.popcornatic.movies.data.api.MovieApiImpl
+import com.solt.popcornatic.searchanddiscover.data.remote.api.DiscoverOptionsApi
+import com.solt.popcornatic.searchanddiscover.data.remote.api.SearchAndDiscoverApi
 import com.solt.popcornatic.tvshows.data.remote.api.TvShowsApiImpl
 import dagger.Module
 import dagger.Provides
@@ -82,6 +84,16 @@ import javax.inject.Singleton
     @Singleton
     fun providesTvShowsApi(retrofit: Retrofit):TvShowsApiImpl{
         return retrofit.create(TvShowsApiImpl::class.java)
+    }
+    @Provides
+    @Singleton
+    fun providesSearchAndDiscoverApi(retrofit: Retrofit):SearchAndDiscoverApi{
+        return retrofit.create(SearchAndDiscoverApi::class.java)
+    }
+    @Provides
+    @Singleton
+    fun providesSDiscoverOptionsApi(retrofit: Retrofit):DiscoverOptionsApi{
+        return retrofit.create(DiscoverOptionsApi::class.java)
     }
 
 }

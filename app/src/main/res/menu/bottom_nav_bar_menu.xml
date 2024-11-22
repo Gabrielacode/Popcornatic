@@ -6,4 +6,7 @@
     <item android:id="@+id/tvMainPage"
         android:title ="@string/tv_shows"
         android:icon="@drawable/tv_show_bottomnav_menu_icon"/>
+    <item android:id="@+id/searchAndDiscoverPage"
+        android:title ="Search"
+        android:icon="@drawable/tv_show_bottomnav_menu_icon"/>
 </menu>
