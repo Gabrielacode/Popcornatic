@@ -13,6 +13,8 @@ import com.solt.popcornatic.databinding.ListDialogLayoutBinding
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Videos.MovieDetailVideos
 import com.solt.popcornatic.movies.data.repository.MovieRepositoryImpl
 import com.solt.popcornatic.movies.ui.adapter.MovieVideoListAdapter
+import com.solt.popcornatic.tvshows.data.remote.repository.TvShowsRepositoryImpl
+import com.solt.popcornatic.user.data.local.database.model.Type
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,7 +23,9 @@ import javax.inject.Inject
 class MovieVideoListPage : Fragment() {
 lateinit var binding:ListDialogLayoutBinding
 @Inject
-lateinit var repository: MovieRepositoryImpl
+lateinit var movieRepo: MovieRepositoryImpl
+@Inject
+lateinit var tvShowRepo:TvShowsRepositoryImpl
 
 
     override fun onCreateView(
@@ -35,12 +39,18 @@ lateinit var repository: MovieRepositoryImpl
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val movieId = arguments?.getInt(VIDEO)
-        if (movieId == null){
+        val id = arguments?.getInt(VIDEO)
+        val type = arguments?.getString(TYPE)
+        if (id == null || type == null){
             findNavController().popBackStack()
         }
         viewLifecycleOwner.lifecycleScope.launch {
-            val videosResult = repository.getMovieVideosById(movieId!!)
+            val videosResult = when(Type.valueOf(type!!)){
+                Type.MOVIE -> {
+                   movieRepo.getMovieVideosById(id!!)
+                }
+                Type.TV_SHOW -> {tvShowRepo.getTvShowVideos(id!!)}
+            }
             when(videosResult){
                 is ApiResult.Failure.ApiFailure -> findNavController().popBackStack()
                 is ApiResult.Failure.NetworkFailure -> findNavController().popBackStack()

@@ -13,6 +13,8 @@ import com.solt.popcornatic.databinding.CreditsLayoutBinding
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Credits.MovieDetailCredits
 import com.solt.popcornatic.movies.data.repository.MovieRepositoryImpl
 import com.solt.popcornatic.movies.ui.adapter.CreditsViewPagerAdapter
+import com.solt.popcornatic.tvshows.data.remote.repository.TvShowsRepositoryImpl
+import com.solt.popcornatic.user.data.local.database.model.Type
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,7 +23,8 @@ const val  CREDITS = "credits"
 @AndroidEntryPoint
 class CreditsPage : Fragment(){
     lateinit var binding: CreditsLayoutBinding
-    @Inject lateinit var repository:MovieRepositoryImpl
+    @Inject lateinit var movieRepo:MovieRepositoryImpl
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,13 +39,15 @@ class CreditsPage : Fragment(){
 
 
         // Get the movie Id
-        val movieId = arguments?.getInt(CREDITS)
-        if(movieId==null){
+        val id = arguments?.getInt(CREDITS)
+        if(id==null){
             findNavController().popBackStack()
 
         }
         viewLifecycleOwner.lifecycleScope.launch {
-            val result = repository.getMovieCreditsById(movieId!!)
+            val result =
+                movieRepo.getMovieCreditsById(id!!)
+
             when(result){
                 is ApiResult.Failure.ApiFailure -> {
                     findNavController().popBackStack()

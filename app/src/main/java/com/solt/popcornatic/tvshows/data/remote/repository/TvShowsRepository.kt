@@ -15,4 +15,13 @@ interface TvShowsRepository {
     suspend fun getTvShowSeason(tvShowId: Int,seasonNumber: Int):ApiResult
     suspend fun getTvShowEpisode(tvShowId: Int,seasonNumber: Int,episodeNumber:Int):ApiResult
 
+    suspend fun getRecommendedTvShows(tvShowId: Int,page: Int):ApiResult
+    suspend fun getSimilarTvShows(tvShowId: Int,page: Int):ApiResult
+
+    suspend fun getTvShowsProductionCompanyDetailsById(companyId:Int):ApiResult
+
+    suspend fun getTvShowImages(tvShowId: Int):ApiResult
+    suspend fun getTvShowVideos(tvShowId: Int):ApiResult
+    suspend fun getTvShowCredits(tvShowId: Int):ApiResult
+
 }

@@ -85,4 +85,70 @@ class TvShowsRepositoryImpl @Inject constructor(val tvShowsApi: TvShowsApiImpl):
             ApiResult.Failure.ApiFailure(e)
         }
     }
+
+    override suspend fun getRecommendedTvShows(tvShowId: Int, page: Int): ApiResult {
+        return  try {
+            val result = tvShowsApi.getTvShowDetailRecommendations(tvShowId,page)
+            ApiResult.Success(result)
+        }catch (e: IOException){
+            ApiResult.Failure.NetworkFailure(e)
+        }catch (e: HttpException){
+            ApiResult.Failure.ApiFailure(e)
+        }
+    }
+
+    override suspend fun getSimilarTvShows(tvShowId: Int, page: Int): ApiResult {
+        return  try {
+            val result = tvShowsApi.getTvShowDetailSimilar(tvShowId,page)
+            ApiResult.Success(result)
+        }catch (e: IOException){
+            ApiResult.Failure.NetworkFailure(e)
+        }catch (e: HttpException){
+            ApiResult.Failure.ApiFailure(e)
+        }
+    }
+
+    override suspend fun getTvShowsProductionCompanyDetailsById(companyId: Int): ApiResult {
+        return  try {
+            val result = tvShowsApi.getProductionCompanyDetailsById(companyId)
+            ApiResult.Success(result)
+        }catch (e: IOException){
+            ApiResult.Failure.NetworkFailure(e)
+        }catch (e: HttpException){
+            ApiResult.Failure.ApiFailure(e)
+        }
+    }
+
+    override suspend fun getTvShowImages(tvShowId: Int): ApiResult {
+        return  try {
+            val result = tvShowsApi.getTvShowImages(tvShowId)
+            ApiResult.Success(result)
+        }catch (e: IOException){
+            ApiResult.Failure.NetworkFailure(e)
+        }catch (e: HttpException){
+            ApiResult.Failure.ApiFailure(e)
+        }
+    }
+
+    override suspend fun getTvShowVideos(tvShowId: Int): ApiResult {
+        return  try {
+            val result = tvShowsApi.getTvShowVideos(tvShowId)
+            ApiResult.Success(result)
+        }catch (e: IOException){
+            ApiResult.Failure.NetworkFailure(e)
+        }catch (e: HttpException){
+            ApiResult.Failure.ApiFailure(e)
+        }
+    }
+
+    override suspend fun getTvShowCredits(tvShowId: Int): ApiResult {
+        return  try {
+            val result = tvShowsApi.getTvShowCredits(tvShowId)
+            ApiResult.Success(result)
+        }catch (e: IOException){
+            ApiResult.Failure.NetworkFailure(e)
+        }catch (e: HttpException){
+            ApiResult.Failure.ApiFailure(e)
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package com.solt.popcornatic.movies.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,15 +16,20 @@ import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Images.MovieDet
 import com.solt.popcornatic.movies.data.model.MovieDetailPackage.Images.toImage
 import com.solt.popcornatic.movies.data.repository.MovieRepositoryImpl
 import com.solt.popcornatic.movies.ui.adapter.MovieImageListAdapter
+import com.solt.popcornatic.tvshows.data.remote.repository.TvShowsRepositoryImpl
+import com.solt.popcornatic.user.data.local.database.model.Type
+import com.solt.popcornatic.user.ui.fragments.ITEM_TYPE
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-const val MOVIEIMAGES = "movies_images"
+const val IMAGES = "_images"
 @AndroidEntryPoint
 class MovieImageListPage: Fragment() {
     lateinit var binding:ListDialogLayoutBinding
     @Inject
-    lateinit var repository:MovieRepositoryImpl
+    lateinit var movieRepo:MovieRepositoryImpl
+    @Inject
+    lateinit var tvShowRepo :TvShowsRepositoryImpl
     val imageAdapter = MovieImageListAdapter()
 
     override fun onCreateView(
@@ -37,8 +43,9 @@ class MovieImageListPage: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val movieId = arguments?.getInt(MOVIEIMAGES)
-        if (movieId== null){
+        val id = arguments?.getInt(IMAGES)
+        val type = arguments?.getString(TYPE)
+        if (id== null || type == null){
             findNavController().popBackStack()
         }
         binding.root.apply {
@@ -46,7 +53,14 @@ class MovieImageListPage: Fragment() {
             adapter = imageAdapter
         }
         viewLifecycleOwner.lifecycleScope.launch {
-            val result = repository.getMovieImagesById(movieId!!)
+            Log.i("Join",id.toString())
+            Log.i("Join",type.toString())
+            val result =  when(Type.valueOf(type!!)){
+                Type.MOVIE -> {movieRepo.getMovieImagesById(id!!)}
+                Type.TV_SHOW -> {
+                   tvShowRepo.getTvShowImages(id!!)
+                }
+            }
             when(result){
                 is ApiResult.Failure.ApiFailure -> findNavController().popBackStack()
                 is ApiResult.Failure.NetworkFailure -> findNavController().popBackStack()

@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent">
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/popularityTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/popularity_icon"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/outfit"
+
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+
+            app:layout_constraintBottom_toBottomOf="@+id/vote_avg_Tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="324565" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/vote_avg_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/afacad_flux"
+            android:textSize="36sp"
+
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="32%" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/vote_rating_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:drawableEnd="@drawable/vote_rating_icon"
+            android:drawablePadding="6dp"
+            android:fontFamily="@font/outfit"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+
+
+            app:layout_constraintBottom_toBottomOf="@+id/vote_avg_Tv"
+            app:layout_constraintEnd_toStartOf="@+id/popularityTv"
+            tools:text="324565" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vote_avg_Tv">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="4dp">
+
+                <TextView
+                    android:id="@+id/original_title_label_Tv"
+                    style="@style/LabelText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/original_title" />
+
+                <TextView
+                    android:id="@+id/original_title_Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily=""
+                    tools:text="ksdksdkskdjksjdkjskdksdksk" />
+
+                <TextView
+                    android:id="@+id/overview_label_Tv"
+                    style="@style/LabelText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/overview" />
+
+                <TextView
+                    android:id="@+id/overview_Tv"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="4dp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:layout_marginTop="4dp"
+            android:id="@+id/details_flow"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:constraint_referenced_ids="release_date_btn,release_status_btn,original_language_btn,original_country_btn"
+            app:flow_horizontalGap="4dp"
+            app:flow_maxElementsWrap="4"
+            app:flow_wrapMode="chain"
+            app:flow_horizontalStyle="packed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+        <Button
+            android:id="@+id/release_date_btn"
+            style="@style/CustomButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:padding="4dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/release_status_btn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView"
+            tools:text="2022 -20-11sdsdsdssd" />
+
+        <Button
+            android:id="@+id/release_status_btn"
+            style="@style/CustomButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:padding="4dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/original_language_btn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/release_date_btn"
+            app:layout_constraintTop_toBottomOf="@+id/cardView"
+            tools:text="2022 -20-11" />
+
+        <Button
+            android:id="@+id/original_language_btn"
+            style="@style/CustomButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:padding="4dp"
+            android:textSize="12sp"
+
+            app:layout_constraintEnd_toStartOf="@+id/original_country_btn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/release_status_btn"
+            app:layout_constraintTop_toBottomOf="@+id/cardView"
+            tools:text="2022 -20-11" />
+
+        <Button
+            android:id="@+id/original_country_btn"
+            style="@style/CustomButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:padding="4dp"
+            android:text="@string/origin_countries"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/original_language_btn"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/genre_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/details_flow" />
+
+        <TextView
+            android:id="@+id/recommended_label_Tv"
+            style="@style/LabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recommended"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/genre_list" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recommendations_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recommended_label_Tv" />
+
+        <TextView
+            android:id="@+id/production_company_label_Tv"
+            style="@style/LabelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/production"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recommendations_list" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/production_companies_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/production_company_label_Tv" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/images_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+
+            android:padding="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/production_companies_list">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/image_text"
+                style="@style/LabelText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:text="@string/images"
+                app:layout_constraintBottom_toBottomOf="@+id/image_icon"
+                app:layout_constraintEnd_toStartOf="@+id/image_icon"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <ImageView
+                android:id="@+id/image_icon"
+                android:layout_width="20dp"
+
+                android:layout_height="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/list_icon"
+                app:tint="?attr/colorPrimary" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/videos_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:padding="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/images_section"
+
+            >
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/video_text"
+                style="@style/LabelText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/videos"
+                app:layout_constraintBottom_toBottomOf="@+id/video_icon"
+                app:layout_constraintEnd_toStartOf="@+id/video_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/video_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/list_icon"
+                app:tint="?attr/colorPrimary" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/credits_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_marginTop="4dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/videos_section">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text"
+                style="@style/LabelText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/credits"
+                app:layout_constraintBottom_toBottomOf="@+id/icon"
+                app:layout_constraintEnd_toStartOf="@+id/icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="20dp"
+
+                android:layout_height="20dp"
+                android:layout_alignParentEnd="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/list_icon"
+                app:tint="?attr/colorPrimary" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>
+
+
+
+

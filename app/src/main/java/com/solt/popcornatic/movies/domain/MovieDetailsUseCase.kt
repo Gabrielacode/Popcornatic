@@ -6,6 +6,6 @@ import javax.inject.Inject
 
 class MovieDetailsUseCase @Inject constructor(val movieRepo:MovieRepositoryImpl,val pagedMovieRepository: PagedMovieRepository) {
      suspend fun getMovieDetailsById(movieId :Int) = movieRepo.getMovieDetailsById(movieId)
-     fun getMovieRecommendationsbyId(movieId: Int) = pagedMovieRepository.getPagedReccommendedMovies(movieId)
+     fun getMovieRecommendationsbyId(movieId: Int) = pagedMovieRepository.getPagedRecommendedMovies(movieId)
 
 }

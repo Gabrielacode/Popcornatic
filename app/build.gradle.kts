@@ -41,6 +41,7 @@ android {
     }
 }
 
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -70,16 +71,16 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
     // https://mvnrepository.com/artifact/com.github.bumptech.glide/glide
     implementation("com.github.bumptech.glide:glide:4.13.1")
-    annotationProcessor ("com.github.bumptech.glide:compiler:4.13.1")
+    kapt ("com.github.bumptech.glide:compiler:4.13.1")
 
-    val paging_version = "3.3.2"
+    val pagingversion = "3.3.2"
 
-    implementation("androidx.paging:paging-runtime:$paging_version")
+    implementation("androidx.paging:paging-runtime:$pagingversion")
     val room_version = "2.6.1"
 
     implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-paging:$room_version")
+    annotationProcessor ("androidx.room:room-compiler:$room_version")
 
     // To use Kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$room_version")
@@ -105,7 +106,4 @@ dependencies {
     //Youtube Video Player
     implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.1")
     implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:custom-ui:12.1.1")
-}
-kapt{
-    correctErrorTypes = true
 }

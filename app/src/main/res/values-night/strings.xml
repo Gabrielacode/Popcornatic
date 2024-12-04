@@ -17,4 +17,9 @@
     <string name="guest_stars">Guest Stars</string>
     <string name="search">Search</string>
     <string name="submit">Submit</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="user">User</string>
+    <string name="name">Name</string>
+    <string name="moviesa">Movies</string>
+    <string name="tv_showsa">Tv Shows</string>
 </resources>

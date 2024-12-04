@@ -45,7 +45,6 @@ class ProductionCompanyDetailsBottomDialog:BottomSheetDialogFragment() {
             findNavController().popBackStack()
         }
 
-        Log.i("CompanyId",companyId.toString())
         viewLifecycleOwner.lifecycleScope.launch {
 
                 val result = movieRepository.getProductionCompanyDetailsById(companyId!!)

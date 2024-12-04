@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 <item android:id="@+id/movieMainPage"
-    android:title="@string/movies"
+    android:title="@string/moviesa"
     android:icon="@drawable/movie_bottomnav_menu_icon"/>
     <item android:id="@+id/tvMainPage"
-        android:title ="@string/tv_shows"
+        android:title ="@string/tv_showsa"
         android:icon="@drawable/tv_show_bottomnav_menu_icon"/>
     <item android:id="@+id/searchAndDiscoverPage"
-        android:title ="Search"
-        android:icon="@drawable/tv_show_bottomnav_menu_icon"/>
+        android:title ="@string/search"
+        android:icon="@drawable/search_icon"/>
+    <item android:id="@+id/userPage"
+        android:title ="@string/user"
+        android:icon="@drawable/users_icon"/>
+
+
 </menu>

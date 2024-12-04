@@ -2,11 +2,16 @@ package com.solt.popcornatic.movies.ui.fragments
 
 import android.os.Bundle
 import android.util.Log
+import android.view.GestureDetector
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
+import android.view.View.OnTouchListener
+import android.view.ViewConfiguration
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
+import androidx.core.view.ViewConfigurationCompat
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -14,6 +19,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.Scene
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
@@ -30,10 +36,14 @@ import com.solt.popcornatic.movies.ui.adapter.MovieDetailRecommendationsAdapter
 import com.solt.popcornatic.movies.ui.adapter.MovieItemActions
 import com.solt.popcornatic.movies.ui.adapter.ProductionCompaniesListAdapter
 import com.solt.popcornatic.movies.ui.viewmodel.MovieDetailPageViewModel
+import com.solt.popcornatic.user.data.local.database.model.Type
+import com.solt.popcornatic.user.ui.fragments.ITEMNAME
+import com.solt.popcornatic.user.ui.fragments.ITEM_ID
+import com.solt.popcornatic.user.ui.fragments.ITEM_POSTER_PATH
+import com.solt.popcornatic.user.ui.fragments.ITEM_TYPE
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class MovieDetailsPage:Fragment(),MovieItemActions {
@@ -93,6 +103,10 @@ class MovieDetailsPage:Fragment(),MovieItemActions {
             layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
             adapter = recommendationsAdapter
         }
+        secondPartBinding.productionCompaniesList.apply {
+            layoutManager= LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+            adapter = productionCompaniesAdapter}
+
         viewLifecycleOwner.lifecycleScope.launch {
           //Initialize Adapters
             viewModel.movieDetailsStateFlow.collectLatest {
@@ -105,11 +119,50 @@ class MovieDetailsPage:Fragment(),MovieItemActions {
         val secondScene = Scene(majorRootForScenesBinding.rootSceneLayout, secondPartBinding.root)
         val transition = TransitionInflater.from(requireContext())
             .inflateTransition(R.transition.movie_detail_page_transition)
+//Setting the swipe up and down gesture
+        val firstPartScrollOnTouchListener = object :OnTouchListener{
+            var startY = 0.0f
+            var endY = 0.0f
+            val viewConfiguration = ViewConfiguration.get(requireContext())
+            val touchSlop = viewConfiguration.scaledTouchSlop
 
-        firstPartBinding.toSecondPageBtn.setOnClickListener {
-            TransitionManager.go(secondScene, transition)
-            isOnSecondPartBinding = true
+
+            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+               return when(event?.action){
+                   MotionEvent.ACTION_DOWN->{
+                       startY =event.y
+                       view.onTouchEvent(event)
+                        true
+                   }
+                    MotionEvent.ACTION_UP->{
+                        view.onTouchEvent(event)
+                        true
+                    }
+                   MotionEvent.ACTION_MOVE->{
+                       view.onTouchEvent(event)
+                       endY = event.y
+                       val deltaY = endY -startY
+                       if (deltaY<touchSlop){
+                           TransitionManager.go(secondScene, transition)
+                           isOnSecondPartBinding = true
+                       }
+
+                       true
+                   }
+
+                   else -> {
+                       view.onTouchEvent(event)
+                       false
+                   }
+               }
+            }
+
         }
+      
+        firstPartBinding.root.setOnTouchListener(firstPartScrollOnTouchListener)
+
+
+
 //If in second Part if back is pressed go back to first part
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
@@ -170,6 +223,17 @@ class MovieDetailsPage:Fragment(),MovieItemActions {
                             R.drawable.ic_launcher_foreground
                         ).fitCenter().into(this)
                 }
+                //Bind the add to list adapter to load the list of the favourites
+                addToList.setOnClickListener {
+                    val itemName = data.title
+                    val itemId = data.id
+                    val itemPoster = data.posterPath?:data.backdropPath
+                    val itemType = Type.MOVIE
+
+                    val bundle = bundleOf(ITEMNAME to itemName, ITEM_TYPE to itemType.name, ITEM_ID to itemId,
+                        ITEM_POSTER_PATH to itemPoster)
+                    findNavController().navigate(R.id.action_movieDetailsPage_to_favouriteBottomDialog,bundle)
+                }
             }
         }
     }
@@ -214,13 +278,9 @@ class MovieDetailsPage:Fragment(),MovieItemActions {
                     }
 
                     //Production Companies
-                    productionCompaniesList.apply {
-                        layoutManager= LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-                        adapter = productionCompaniesAdapter
-                        productionCompaniesAdapter.submitList(data.productionCompanies)
-                    }
+                    productionCompaniesAdapter.submitList(data.productionCompanies)
                     imagesSection.setOnClickListener {
-                        val bundle = bundleOf(MOVIEIMAGES to data.id)
+                        val bundle = bundleOf(IMAGES to data.id, TYPE to Type.MOVIE.name)
                         findNavController().navigate(R.id.action_movieDetailsPage_to_movieImageListPage,bundle)
                     }
                     creditsSection.setOnClickListener {
@@ -228,7 +288,7 @@ class MovieDetailsPage:Fragment(),MovieItemActions {
                         findNavController().navigate(R.id.action_movieDetailsPage_to_creditsDialog,bundle)
                     }
                     videosSection.setOnClickListener {
-                        val bundle = bundleOf(VIDEO to data.id)
+                        val bundle = bundleOf(VIDEO to data.id, TYPE to Type.MOVIE.name)
                         findNavController().navigate(R.id.action_movieDetailsPage_to_movieVideoListPage,bundle)
                     }
 

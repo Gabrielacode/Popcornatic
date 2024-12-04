@@ -122,10 +122,7 @@ class MovieMainPage:Fragment(), MovieItemActions {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        binding.bottomNavBar.setupWithNavController(findNavController())
-    }
+
 
 
 

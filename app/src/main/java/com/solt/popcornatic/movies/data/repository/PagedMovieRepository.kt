@@ -28,7 +28,7 @@ class PagedMovieRepository @Inject constructor(val movieRepositoryImpl: MovieRep
             MoviePagingSource(MIN_PAGE_NUMBER, movieRepositoryImpl, MovieRepositoryImpl::getTopRatedMovies)
         }.flow
 
-    fun getPagedReccommendedMovies(movieId: Int) =
+    fun getPagedRecommendedMovies(movieId: Int) =
         Pager(PagingConfig(10)) {
             MovieRecommendationsPagingSource(movieId, MIN_PAGE_NUMBER, movieRepositoryImpl)
         }.flow

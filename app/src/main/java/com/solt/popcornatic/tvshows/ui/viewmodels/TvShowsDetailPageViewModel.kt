@@ -1,6 +1,8 @@
 package com.solt.popcornatic.tvshows.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.paging.cachedIn
 import com.solt.popcornatic.ApiResult
 import com.solt.popcornatic.movies.ui.viewmodel.MovieDetailPageViewModel
 import com.solt.popcornatic.tvshows.data.remote.model.seasonsandepisodes.Season.TvShowSeasonDetail
@@ -54,6 +56,7 @@ class TvShowsDetailPageViewModel @Inject constructor(val useCase:TvShowDetailPag
             }
         }
     }
+    suspend fun getRecommendedTvShows(tvShowId: Int)= useCase.getTvShowRecommendations(tvShowId).cachedIn(viewModelScope)
 
     sealed interface LoadOperation{
         class Loading:LoadOperation

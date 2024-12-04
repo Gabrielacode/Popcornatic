@@ -119,9 +119,6 @@ class TvMainPage: Fragment(),TvShowItemActions {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        binding.bottomNavBar.setupWithNavController(findNavController())
-    }
+
 
 }

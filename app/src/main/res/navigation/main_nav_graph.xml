@@ -41,6 +41,9 @@
         <action
             android:id="@+id/action_movieDetailsPage_to_movieVideoListPage"
             app:destination="@id/movieVideoListPage" />
+        <action
+            android:id="@+id/action_movieDetailsPage_to_favouriteBottomDialog"
+            app:destination="@id/favouriteBottomDialog" />
     </fragment>
     <dialog
         android:id="@+id/countryListDialog"
@@ -78,6 +81,25 @@
         <action
             android:id="@+id/action_tvDetailsPage_to_tvShowSeasonandEpisodesPage"
             app:destination="@id/tvShowSeasonandEpisodesPage" />
+        <action
+            android:id="@+id/action_tvDetailsPage_to_favouriteBottomDialog"
+            app:destination="@id/favouriteBottomDialog" />
+        <action
+            android:id="@+id/action_tvDetailsPage_self"
+            app:destination="@id/tvDetailsPage" />
+        <action
+            android:id="@+id/action_tvDetailsPage_to_tvshowProductionCompanyDetailsBottomDialog"
+            app:destination="@id/tvshowProductionCompanyDetailsBottomDialog" />
+        <action
+            android:id="@+id/action_tvDetailsPage_to_movieImageListPage"
+            app:destination="@id/movieImageListPage" />
+        <action
+            android:id="@+id/action_tvDetailsPage_to_movieVideoListPage"
+            app:destination="@id/movieVideoListPage" />
+        <action
+            android:id="@+id/action_tvDetailsPage_to_creditsPage"
+            app:destination="@id/creditsPage" />
+
     </fragment>
     <fragment
         android:id="@+id/tvShowSeasonandEpisodesPage"
@@ -105,6 +127,12 @@
         <action
             android:id="@+id/action_searchAndDiscoverPage_to_optionSelectorDialog"
             app:destination="@id/optionSelectorDialog" />
+        <action
+            android:id="@+id/action_searchAndDiscoverPage_to_tvDetailsPage"
+            app:destination="@id/tvDetailsPage" />
+        <action
+            android:id="@+id/action_searchAndDiscoverPage_to_movieDetailsPage"
+            app:destination="@id/movieDetailsPage" />
     </fragment>
     <dialog
         android:id="@+id/genreBottomDialog"
@@ -120,5 +148,29 @@
             app:popUpTo="@id/searchAndDiscoverPage"
             app:popUpToInclusive="false" />
     </dialog>
+    <fragment
+        android:id="@+id/userPage"
+        android:name="com.solt.popcornatic.user.ui.fragments.UserPage"
+        android:label="UserPage" >
+        <action
+            android:id="@+id/action_userPage_to_addFavouritePage"
+            app:destination="@id/addFavouritePage" />
+    </fragment>
+    <dialog
+        android:id="@+id/addFavouritePage"
+        android:name="com.solt.popcornatic.user.ui.fragments.AddFavouritePage"
+        android:label="AddFavouritePage" />
+    <dialog
+        android:id="@+id/favouriteBottomDialog"
+        android:name="com.solt.popcornatic.user.ui.fragments.FavouriteBottomDialog"
+        android:label="FavouriteBottomDialog" />
+    <dialog
+        android:id="@+id/tvshowProductionCompanyDetailsBottomDialog"
+        android:name="com.solt.popcornatic.tvshows.ui.fragments.TvshowProductionCompanyDetailsBottomDialog"
+        android:label="TvshowProductionCompanyDetailsBottomDialog" />
+    <fragment
+        android:id="@+id/creditsPage"
+        android:name="com.solt.popcornatic.tvshows.ui.fragments.CreditsPage"
+        android:label="CreditsPage" />
 
 </navigation>
